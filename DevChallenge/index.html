@@ -1,0 +1,51 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Render Results</title>
+
+</head>
+
+<body>
+    <h1>Echo Messages for Chat ID = 3 Here as HTML</h1>
+    <div id="chat-3"><?php /* Call Your Class Here using echo() */?></div>
+
+    <h1>Render Messages for Chat ID = 8 Here as JSON</h1>
+    <div id="chat-8"><?php /* Call Your Class Here using json_encode() */?></div>
+
+    <h1>Render User ID = 100 Here as JSON</h1>
+    <div id="user-100"><?php /* Call Your Class Here using json_encode() */?></div>
+
+    <h1>Echo Message ID = 459 Here as HTML</h1>
+    <div id="msg-459"><?php /* Call Your Class Here using echo() */?></div>
+</body>
+</html>
+
+<script>
+  const base_url = "http://localhost:3000/api/";
+  async function logMessages(id) {
+    const response = await fetch(`${base_url}chats/${id}`);
+    const result = await response.json();
+    document.getElementById(`chat-${id}`).innerHTML = result;
+  }
+
+  async function logMessage(id) {
+    const response = await fetch(`${base_url}messages/${id}`);
+    const result = await response.json();
+    document.getElementById(`msg-${id}`).innerHTML = result.message;
+  }
+
+  async function logUser(id) {
+    const response = await fetch(`${base_url}users/${id}`);
+    const result = await response.json();
+    document.getElementById(`user-${id}`).innerHTML = result.username;
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    logMessages(3);
+    logMessages(8);
+    logMessage(459);
+    logUser(100);
+  }, false);
+</script>
