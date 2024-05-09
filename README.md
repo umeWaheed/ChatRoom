@@ -18,3 +18,11 @@ Things you may want to cover:
 * How to run
   - open index.html file in `DevChallenge` folder
   - you can tweek ids in script tag to check the working of API
+ 
+* Controllers
+  - chats_controller
+  - users_controller
+  - messages_controller
+
+* Services
+  - JsonParser (contains methods for parsing the json files)
